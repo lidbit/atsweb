@@ -1,0 +1,16 @@
+<div class="container" ng-controller="testIntroCtrl">
+    <div class="panel-body">
+        <h2>{{name}}</h2>
+
+        <h3>
+            This is a {{type}} test which contains {{questions.length}} questions
+        </h3>
+
+        <p>
+            You have {{timelimit}} seconds to complete it.
+        </p>
+
+        <button class="btn btn-primary" ng-click="Cancel()">Cancel</button>
+        <button class="btn btn-primary" ng-click="runTest()">Take the Test</button>
+    </div>
+</div>

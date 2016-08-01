@@ -1,0 +1,16 @@
+<div class="container">
+    <div ng-controller="userCtrl">
+        <div class="list-group" ng-repeat="user in users">
+            <a href="/app/users/edit/{{user.Id}}" class="list-group-item active">
+                <h4 class="list-group-item-heading">{{user.Name}}</h4>
+                <p class="list-group-item-text">...</p>
+            </a>
+        </div>
+        <button type="button" class="btn btn-default" ng-click="Back()">
+            <span class="glyphicon glyphicon--left"></span><
+        </button>
+        <button type="button" class="btn btn-info" ng-click="addUser()">
+            <span class="glyphicon glyphicon--plus"></span>+
+        </button>
+    </div>
+</div>

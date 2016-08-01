@@ -1,0 +1,22 @@
+<div class="container">
+    <div ng-controller="TestCtrl">
+        <div class="list-group" ng-repeat="test in tests">
+
+            <a href="/app/tests/edit/{{test.Id}}" class="list-group-item active">
+                <h4 class="list-group-item-heading">{{test.Name}}</h4>
+
+                <p class="list-group-item-text">Test description here.</p>
+            </a>
+
+            <div class="well">
+                <a href="/app/load/{{test.Id}}" class="btn btn-success" role="button">Load</a>
+            </div>
+        </div>
+        <button type="button" class="btn btn-default" ng-click="Back()">
+            <span class="glyphicon glyphicon--left"></span><
+        </button>
+        <button type="button" class="btn btn-info" ng-click="addTest()">
+            <span class="glyphicon glyphicon--plus"></span>+
+        </button>
+    </div>
+</div>

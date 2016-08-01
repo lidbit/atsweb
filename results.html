@@ -1,0 +1,13 @@
+<div class="container">
+    <div>
+        <div class="list-group" ng-repeat="result in results">
+
+            <a href="/app/results/view/{{result.TestResultId}}" class="list-group-item active">
+                <h4 class="list-group-item-heading">{{result.Description}}</h4>
+            </a>
+        </div>
+        <button type="button" class="btn btn-default" ng-click="Back()">
+            <span class="glyphicon glyphicon--left"></span><
+        </button>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="panel-body">
+        <div class="form-group">
+            <label>Test Name:</label>
+            <input class="form-control" ng-model="name"/>
+        </div>
+        <div class="form-group">
+            <label>Test type:</label>
+            <input class="form-control" ng-model="type"/>
+        </div>
+        <div class="form-group">
+            <label>Timelimit:</label>
+            <input type="number" class="form-control" ng-model="timelimit"/>
+        </div>
+        <div class="form-group">
+            <label>Questions:</label>
+            <select multiple class="form-control" ng-change="updateSelected(selectedQuestion)"
+                    ng-model="selectedQuestion" ng-options="question.Quest for question in questions"></select>
+
+            <div class="pull-left">
+                <input class="form-control" ng-model="selectedQuestion[0].Quest"/>
+                <input class="form-control" ng-model="selectedQuestion[0].Answer"/>
+            </div>
+
+            <button class="btn btn-primary" ng-click="AddQuestion()">Add Question</button>
+            <button class="btn btn-danger pull-right" ng-click="deleteQuestion(selectedQuestion)">Delete Question
+            </button>
+            <input class="form-control" ng-model="newQuestion"/>
+            <input class="form-control" ng-model="newAnswer"/>
+        </div>
+        <button class="btn btn-primary" ng-click="saveEdit()">Save</button>
+        <button class="btn btn-primary" ng-click="cancelEdit()">Cancel</button>
+        <button class="btn btn-danger" ng-click="delete()">Delete</button>
+    </div>
+</div>
