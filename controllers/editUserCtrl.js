@@ -1,4 +1,4 @@
-app.controller('editUserCtrl', function ($scope, $http, $q, $routeParams, $location) {
+app.controller('editUserCtrl', function ($scope, $http, $q, $routeParams, $location, AppSettings) {
 
     $scope.name = '';
     $scope.lastname = '';
@@ -8,7 +8,7 @@ app.controller('editUserCtrl', function ($scope, $http, $q, $routeParams, $locat
     $scope.id = $routeParams['id'];
 
     $scope.getUser = function () {
-        $http.get('http://twistttwig.azurewebsites.net/user/edit/' + $scope.id).
+        $http.get(AppSettings.APIurl + $scope.id).
             success(function (data) {
                 var userdata = angular.fromJson(data);
                 $scope.id = userdata.Id;
@@ -49,7 +49,7 @@ app.controller('editUserCtrl', function ($scope, $http, $q, $routeParams, $locat
             email: $scope.email
         };
 
-        $http.post("http://twistttwig.azurewebsites.net/user/save/", postData).
+        $http.post(AppSettings.APIurl, postData).
             success(function (data) {
                 console.log(data);
             }).
@@ -66,7 +66,7 @@ app.controller('editUserCtrl', function ($scope, $http, $q, $routeParams, $locat
             email: $scope.email
         };
 
-        $http.post("http://twistttwig.azurewebsites.net/user/create/", postData).
+        $http.post(AppSettings.APIurl, postData).
             success(function (data) {
                 console.log(data);
             }).

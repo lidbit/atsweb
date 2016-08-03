@@ -1,5 +1,11 @@
 var app = angular.module('AtsAdminApp', ['ngRoute', 'ui.bootstrap']);
 
+app.factory('AppSettings', function() {
+    return {
+        APIurl: "http://twatsapp.azurewebsites.net/"
+    }
+});
+
 app.config(function ($routeProvider, $locationProvider, $httpProvider) {
 
     $locationProvider.html5Mode(true);
@@ -80,21 +86,22 @@ var interceptor = ['$rootScope', '$q', '$location', function (scope, $q, $locati
 });
 
 app.controller('mainCtrl', function($scope, $location, SharedService) {
-	
 	if(typeof SharedService.userId == 'undefined') {
 		$location.url("/app/login");
 	}
 
 	$scope.Logout = function() {
+        $scope.$broadcast('Token', "");
+        $http.defaults.headers.common['Authorization'] = '';
 		SharedService.userId = 'undefined';
 		$location.url("/app");
 	}
 });
 
-app.controller('authCtrl', function ($scope, $http, $location, SharedService) {
+app.controller('authCtrl', function ($scope, $http, $location, SharedService, AppSettings) {
 
     $scope.authenticate = function (user, pass) {
-        $http.post('http://twistttwig.azurewebsites.net/auth', {
+        $http.post(AppSettings.APIurl + 'auth', {
             UserName: user,
             Password: pass
         }).success(function (data) {
@@ -108,13 +115,13 @@ app.controller('authCtrl', function ($scope, $http, $location, SharedService) {
     };
 });
 
-app.controller('TestCtrl', function ($scope, $http, $q, $location, SharedService) {
+app.controller('TestCtrl', function ($scope, $http, $q, $location, SharedService, AppSettings) {
 
     $scope.tests = [];
 
     $scope.getTests = function () {
         var deferred = $q.defer();
-        $http.get('http://twistttwig.azurewebsites.net/tests/').
+        $http.get(AppSettings.APIurl + 'tests/').
             success(function (data) {
                 deferred.resolve(data);
                 $scope.tests = angular.fromJson(data);

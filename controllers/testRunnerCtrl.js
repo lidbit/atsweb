@@ -1,4 +1,4 @@
-app.controller('testRunnerCtrl', function ($scope, $http, $q, $location, $timeout, $filter, TestService, SharedService) {
+app.controller('testRunnerCtrl', function ($scope, $http, $q, $location, $timeout, $filter, TestService, SharedService, AppSettings) {
 
     $scope.test = TestService.test;
     $scope.index = 0;
@@ -22,7 +22,7 @@ app.controller('testRunnerCtrl', function ($scope, $http, $q, $location, $timeou
             testname: $scope.test.test.Name
         };
         console.log(dataObj);
-        $http.post('http://twistttwig.azurewebsites.net/addTestResult', dataObj).
+        $http.post(AppSettings.APIurl + '/addTestResult', dataObj).
             success(function (data) {
                 $scope.testResultId = data;
                 console.log(data);
@@ -49,7 +49,7 @@ app.controller('testRunnerCtrl', function ($scope, $http, $q, $location, $timeou
 
         console.log('dataObj:' + dataObj);
 
-        $http.post('http://twistttwig.azurewebsites.net/addAnswer/', dataObj).
+        $http.post(AppSettings.APIurl + '/addAnswer/', dataObj).
             success(function (data) {
                 console.log(data);
             }).

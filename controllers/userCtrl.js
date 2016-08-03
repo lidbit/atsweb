@@ -1,9 +1,9 @@
-app.controller('userCtrl', function ($scope, $http, $q, $routeParams, $location, SharedService) {
+app.controller('userCtrl', function ($scope, $http, $q, $routeParams, $location, SharedService, AppSettings) {
 
     $scope.users = [];
 
     $scope.getUsers = function() {
-      $http.get('http://twistttwig.azurewebsites.net/users/').
+      $http.get(AppSettings.APIurl + '/users/').
           success(function(data) {
               $scope.users = angular.fromJson(data);
           }).

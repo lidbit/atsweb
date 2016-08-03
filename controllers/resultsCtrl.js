@@ -1,8 +1,8 @@
-app.controller('resultsCtrl', function ($scope, $http, $location, SharedService) {
+app.controller('resultsCtrl', function ($scope, $http, $location, AppSettings) {
 
     $scope.results = [];
 
-    $http.get('http://twistttwig.azurewebsites.net/results/').
+    $http.get(AppSettings.APIurl + '/results/').
         success(function (data) {
             $scope.results = angular.fromJson(data);
         }).

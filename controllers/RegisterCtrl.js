@@ -1,4 +1,4 @@
-app.controller('RegisterCtrl', function($scope, $http){
+app.controller('RegisterCtrl', function($scope, $http, AppSettings){
 
     $scope.name = '';
     $scope.lastname = '';
@@ -18,7 +18,7 @@ app.controller('RegisterCtrl', function($scope, $http){
     $scope.SubmitReg = function() {
         $scope.closeAlerts();
         var postData = { name: $scope.name, lastname: $scope.lastname, email: $scope.email, password: $scope.password };
-        $http.post('http://twistttwig.azurewebsites.net/register', postData).
+        $http.post(AppSettings.APIurl + 'register', postData).
             success(function(data){
                 var result = angular.fromJson(data);
                 if (result.success) {

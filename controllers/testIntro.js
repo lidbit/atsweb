@@ -1,4 +1,4 @@
-app.controller('testIntroCtrl', function ($scope, $http, $q, $location, $routeParams, TestService) {
+app.controller('testIntroCtrl', function ($scope, $http, $q, $location, $routeParams, TestService, AppSettings) {
 
     $scope.name = '';
 
@@ -6,7 +6,7 @@ app.controller('testIntroCtrl', function ($scope, $http, $q, $location, $routePa
 
     $scope.LoadTest = function () {
         var deferred = $q.defer();
-        $http.get('http://twistttwig.azurewebsites.net/test/' + $scope.id).
+        $http.get(AppSettings.APIurl + '/test/' + $scope.id).
             success(function (data) {
                 deferred.resolve();
 
