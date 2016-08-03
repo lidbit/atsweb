@@ -85,7 +85,7 @@ var interceptor = ['$rootScope', '$q', '$location', function (scope, $q, $locati
     $httpProvider.responseInterceptors.push(interceptor);
 });
 
-app.controller('mainCtrl', function($scope, $location, SharedService) {
+app.controller('mainCtrl', function($scope, $http, $location, SharedService) {
 	if(typeof SharedService.userId == 'undefined') {
 		$location.url("/app/login");
 	}
