@@ -2,7 +2,7 @@ var app = angular.module('AtsAdminApp', ['ngRoute', 'ui.bootstrap']);
 
 app.factory('AppSettings', function() {
     return {
-        APIurl: "http://twatsapp.azurewebsites.net/"
+        APIurl: "http://twistttwig.azurewebsites.net/"
     }
 });
 
