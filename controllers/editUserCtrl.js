@@ -8,7 +8,7 @@ app.controller('editUserCtrl', function ($scope, $http, $q, $routeParams, $locat
     $scope.id = $routeParams['id'];
 
     $scope.getUser = function () {
-        $http.get(AppSettings.APIurl + $scope.id).
+        $http.get(AppSettings.APIurl + 'user/edit/' + $scope.id).
             success(function (data) {
                 var userdata = angular.fromJson(data);
                 $scope.id = userdata.Id;
@@ -49,7 +49,7 @@ app.controller('editUserCtrl', function ($scope, $http, $q, $routeParams, $locat
             email: $scope.email
         };
 
-        $http.post(AppSettings.APIurl, postData).
+        $http.post(AppSettings.APIurl + 'user/save', postData).
             success(function (data) {
                 console.log(data);
             }).
@@ -66,7 +66,7 @@ app.controller('editUserCtrl', function ($scope, $http, $q, $routeParams, $locat
             email: $scope.email
         };
 
-        $http.post(AppSettings.APIurl, postData).
+        $http.post(AppSettings.APIurl + 'user/create/', postData).
             success(function (data) {
                 console.log(data);
             }).
