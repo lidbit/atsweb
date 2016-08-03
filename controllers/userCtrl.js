@@ -3,7 +3,7 @@ app.controller('userCtrl', function ($scope, $http, $q, $routeParams, $location,
     $scope.users = [];
 
     $scope.getUsers = function() {
-      $http.get(AppSettings.APIurl + '/users/').
+      $http.get(AppSettings.APIurl + 'users/').
           success(function(data) {
               $scope.users = angular.fromJson(data);
           }).
