@@ -1,4 +1,4 @@
-app.controller('editCtrl', function ($scope, $http, $q, $routeParams, $location, SharedService) {
+app.controller('editCtrl', function ($scope, $http, $q, $routeParams, $location, SharedService, AppSettings) {
 
     $scope.currentTest = null;
 
@@ -23,7 +23,7 @@ app.controller('editCtrl', function ($scope, $http, $q, $routeParams, $location,
     if ('undefined' != typeof $scope.testid) {
 
         var deferred = $q.defer();
-        $http.get("http://twistttwig.azurewebsites.net/test/" + $scope.testid).
+        $http.get(AppSettings.APIurl + "test/" + $scope.testid).
             success(function (data) {
                 deferred.resolve(data);
                 $scope.name = data.test.Name;
@@ -55,7 +55,7 @@ app.controller('editCtrl', function ($scope, $http, $q, $routeParams, $location,
             questions: $scope.questions
         };
 
-        $http.post("http://twistttwig.azurewebsites.net/test/save/", postData).
+        $http.post(AppSettings.APIurl + "test/save/", postData).
             success(function (data) {
                 console.log(data);
             }).
@@ -74,7 +74,7 @@ app.controller('editCtrl', function ($scope, $http, $q, $routeParams, $location,
             questions: $scope.questions
         };
 
-        $http.post("http://twistttwig.azurewebsites.net/test/create/", postData).
+        $http.post(AppSettings.APIurl + "test/create/", postData).
             success(function (data) {
                 console.log(data);
             }).
@@ -99,7 +99,7 @@ app.controller('editCtrl', function ($scope, $http, $q, $routeParams, $location,
         });
 
         // delete on the server
-        $http.post('http://twistttwig.azurewebsites.net/question/delete/' + selected.Id).
+        $http.post(AppSettings.APIurl + 'question/delete/' + selected.Id).
             success(function (data) {
                 console.log(data);
             }).
